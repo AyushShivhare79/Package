@@ -2,6 +2,7 @@ import 'module-alias/register';
 import express from "express";
 import { Request, Response } from "express";
 import routes from "./routes/index";
+import { JWT_SECRET } from './config/env';
 
 const app = express();
 const PORT = 3000;
@@ -13,5 +14,5 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/v1", routes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`);
+  console.log(`Server is running at port ${PORT} ${JWT_SECRET}`);
 });

@@ -87,7 +87,7 @@ export const signup = async (req: Request, res: Response) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const newUser = await prisma.user.create({
+    const newUser: User = await prisma.user.create({
       data: {
         email: email,
         password: hashedPassword,
@@ -95,18 +95,19 @@ export const signup = async (req: Request, res: Response) => {
       },
     });
 
+    // const userWithoutPassword = {
+    //   id: newUser.id,
+    //   email: newUser.email,
+    // };
 
-    const userWithoutPassword = {
-      id: newUser.id,
-      email: newUser.email,
-    };
+    delete newUser.password;
 
-    const token = generateToken(userWithoutPassword, "1m");
-    const refresh_token = generateToken(userWithoutPassword, "7d");
+    const token = generateToken(newUser, "1m");
+    const refresh_token = generateToken(newUser, "7d");
 
     await prisma.user.update({
       where: {
-        id: userWithoutPassword.id,
+        id: newUser.id,
       },
       data: {
         refresh_token: String(refresh_token),
