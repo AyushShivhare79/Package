@@ -1,3 +1,4 @@
+import 'module-alias/register';
 import express from "express";
 import { Request, Response } from "express";
 import routes from "./routes/index";
