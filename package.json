@@ -4,24 +4,35 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npx tsc -w & nodemon dist/index.js",
+    "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "_moduleAliases": {
+    "@": "dist"
+  },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^25.1.0",
     "@types/pg": "^8.16.0",
+    "nodemon": "^3.1.11",
     "prisma": "^7.3.0"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.3.0",
     "@prisma/client": "^7.3.0",
     "@types/express": "^5.0.6",
+    "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "module-alias": "^2.2.3",
     "pg": "^8.17.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.3"
   }
 }
