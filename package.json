@@ -1,7 +1,7 @@
 {
   "name": "nodejs.starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.js starter template with TypeScript, Express, Prisma, and JWT authentication",
   "main": "index.js",
   "scripts": {
     "dev": "npx tsc -w & nodemon dist/index.js",
